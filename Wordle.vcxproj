@@ -248,6 +248,13 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="libraries\SDL2\lib\x64\SDL2.lib" />
+    <Library Include="libraries\SDL2\lib\x64\SDL2main.lib" />
+    <Library Include="libraries\SDL2\lib\x64\SDL2test.lib" />
+    <Library Include="libraries\SDL2_image-2.0.1\lib\x64\SDL2_image.lib" />
+    <Library Include="libraries\SDL2_ttf-2.0.14\lib\x64\SDL2_ttf.lib" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -138,4 +138,21 @@
       <Filter>Resource Files</Filter>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="libraries\SDL2\lib\x64\SDL2.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="libraries\SDL2\lib\x64\SDL2main.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="libraries\SDL2\lib\x64\SDL2test.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="libraries\SDL2_image-2.0.1\lib\x64\SDL2_image.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+    <Library Include="libraries\SDL2_ttf-2.0.14\lib\x64\SDL2_ttf.lib">
+      <Filter>Libraries</Filter>
+    </Library>
+  </ItemGroup>
 </Project>
