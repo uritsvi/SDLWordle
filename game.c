@@ -15,7 +15,7 @@
 #define NUM_OF_LETTERS_IN_WORD 5
 #define NUM_OF_WORDS 6
 
-#define LETTER_CELL_SIZE 75
+#define LETTER_CELL_SIZE (WIDTH / 12.0f)
 #define DISTANCE_BETWEEN_LETTERS_CELLS LETTER_CELL_SIZE / 5
 
 #define LETTER_RENDER_SCALE LETTER_CELL_SIZE / 2
@@ -34,14 +34,14 @@
 #define MIDEL_SCREEN_Y (HIGHT / 2)
 
 #define BOARD_POSE_X MIDEL_SCREEN_X 
-#define BOARD_POSE_Y MIDEL_SCREEN_Y - 100
+#define BOARD_POSE_Y MIDEL_SCREEN_Y - (WIDTH / 7.0f)
 
 #define NULL_CHAR '\0'
 
-#define ON_SCREEN_KEY_BACKGROUND_SCALE_X 55
-#define ON_SCREEN_KEY_BACKGROUND_SCALE_Y ON_SCREEN_KEY_BACKGROUND_SCALE_X * 1.75f
+#define ON_SCREEN_KEY_BACKGROUND_SCALE_X (WIDTH / 18.0f)
+#define ON_SCREEN_KEY_BACKGROUND_SCALE_Y (ON_SCREEN_KEY_BACKGROUND_SCALE_X * 1.75f)
 
-#define ON_SCREEN_KEYBORD_LETTER_OR_SYMBOL_SCALE 30
+#define ON_SCREEN_KEYBORD_LETTER_OR_SYMBOL_SCALE (ON_SCREEN_KEY_BACKGROUND_SCALE_X * 0.75f)
 
 #define TEXT_DEFALUT_COLOR white
 #define AN_CORECT_LETTERS_COLOR bright_grey
@@ -108,8 +108,11 @@ char corect_word[NUM_OF_LETTERS_IN_WORD + 1] = { 0 };
 
 
 
-const Vec2 board_position_min_max = { .x = BOARD_POSE_X - ((NUM_OF_LETTERS_IN_WORD * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE)) / 2) + 0.5f * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE),
-									.y = BOARD_POSE_Y - ((NUM_OF_WORDS * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE)) / 2) + 0.5f * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE) };
+const Vec2 board_position_min_max = { .x = BOARD_POSE_X - ((NUM_OF_LETTERS_IN_WORD * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE)) / 2) +
+									0.5f * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE),
+									
+									.y = BOARD_POSE_Y - ((NUM_OF_WORDS * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE)) / 2) +
+									0.5f * (DISTANCE_BETWEEN_LETTERS_CELLS + LETTER_CELL_SIZE) };
 
 struct letter* board[NUM_OF_WORDS][NUM_OF_LETTERS_IN_WORD] = { NULL };
 
@@ -418,7 +421,8 @@ void create_on_screen_keyboard_key(Vec2 position, char* letter)
 
 void gen_on_screen_keyboard()
 {
-#define KEYBOARD_START_HIGHT HIGHT - 325
+#define KEYBOARD_START_Y (HIGHT * 0.7f)
+#define KEYBORD_START_X MIDEL_SCREEN_X - (((NUM_OF_KEYS_IN_FIRST_LINE / 2.0f) + 1.0f) * ON_SCREEN_KEY_BACKGROUND_SCALE_X)
 
 #define NUM_OF_KEYS_IN_FIRST_LINE 10
 #define NUM_OF_KEY_SECEOND_LINE 9
@@ -426,9 +430,9 @@ void gen_on_screen_keyboard()
 
 #define DISTANCE_BETWEEN_ON_SCREEN_KEYBOARD_KEYS 10
 
-	const Vec2 first_line_keyboard_start_position = vec2(WIDTH - ((NUM_OF_KEYS_IN_FIRST_LINE + 0.5f) * (DISTANCE_BETWEEN_ON_SCREEN_KEYBOARD_KEYS + ON_SCREEN_KEY_BACKGROUND_SCALE_X)), KEYBOARD_START_HIGHT);
+	const Vec2 first_line_keyboard_start_position = vec2(KEYBORD_START_X , KEYBOARD_START_Y);
 
-	const Vec2 seceond_line_keyboard_start_position = vec2(first_line_keyboard_start_position.x + (0.5f * (DISTANCE_BETWEEN_ON_SCREEN_KEYBOARD_KEYS + ON_SCREEN_KEY_BACKGROUND_SCALE_X)),
+	const Vec2 seceond_line_keyboard_start_position = vec2(first_line_keyboard_start_position.x + (0.5f *  (DISTANCE_BETWEEN_ON_SCREEN_KEYBOARD_KEYS + ON_SCREEN_KEY_BACKGROUND_SCALE_X)),
 		first_line_keyboard_start_position.y + DISTANCE_BETWEEN_ON_SCREEN_KEYBOARD_KEYS + ON_SCREEN_KEY_BACKGROUND_SCALE_Y);
 
 	const Vec2 third_line_keyboard_start_position = vec2(first_line_keyboard_start_position.x + 1.5f * (DISTANCE_BETWEEN_ON_SCREEN_KEYBOARD_KEYS + ON_SCREEN_KEY_BACKGROUND_SCALE_X),
